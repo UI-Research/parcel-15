@@ -43,25 +43,6 @@ ch_tracts <- dc_tracts_raw %>%
 ward8 <- dc_wards %>%
   filter(WARD == 8)
 
-### intersect cleaned data to zoom in
-congress_heights <- st_intersection(dc_bg, dc_tracts)
-ward8_roads <- st_intersection(ward8,dc_roads)
-
-### map congress heights neighborhood
-ggplot() +
-  geom_sf(data = ward8,
-          mapping = aes(),
-          fill = 'white',
-          color = palette_urbn_cyan[5]) +
-  geom_sf(data = congress_heights,
-          mapping = aes(),
-          fill = palette_urbn_cyan[2])  +
-  geom_sf(data = ward8_roads,
-          mapping = aes(),
-          color = palette_urbn_gray[7]) +
-  geom_sf(data = ch_landmarks,
-          mapping = aes())
-
 ### proposed boundaries and civic institutions
 landmarks_proposedarea <- leaflet(data = ch_bg) %>% 
   addTiles() %>%
@@ -75,4 +56,18 @@ landmarks_proposedarea <- leaflet(data = ch_bg) %>%
                     label = ~Name) %>%
   addProviderTiles(providers$CartoDB.Positron) 
 
+landmarks_proposedarea
 
+### shiny app prep
+ui <- fluidPage(
+  leafletOutput("mymap",width = '100%')
+)
+
+server <- function(input, output, session) {
+  output$map <- renderLeaflet({
+    leaflet() %>% addTiles() %>% 
+      fitBounds(160, -30, 185, -50)
+  })
+}
+
+shinyApp(ui, server)
