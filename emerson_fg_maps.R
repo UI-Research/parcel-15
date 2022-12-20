@@ -64,9 +64,8 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-  output$map <- renderLeaflet({
-    leaflet() %>% addTiles() %>% 
-      fitBounds(160, -30, 185, -50)
+  output$mymap <- renderLeaflet({
+    leaflet() %>% addTiles() 
   })
 }
 
