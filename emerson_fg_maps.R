@@ -71,9 +71,3 @@ ggplot() +
   geom_sf(data = ch_landmarks,
           mapping = aes())
 
-ggplot() +
-  geom_sf(data = dc_tracts,
-          mapping = aes()) +
-  geom_sf(data = dc_bg,
-          mapping = aes()) +
-  theme_urbn_map()
