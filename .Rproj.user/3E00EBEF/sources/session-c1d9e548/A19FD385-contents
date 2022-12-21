@@ -1,0 +1,50 @@
+---
+title: "proposed-boundaries_civic-institutions"
+output: html_document
+date: "2022-12-21"
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libraries, include=FALSE}
+library(tidyverse)
+library(leaflet)
+library(shiny)
+library(rsconnect)
+```
+
+```{r datasets}
+ch_bg <- read_csv('data/clean/ch_bg.csv')
+ch_tracts <- read_csv('data/clean/ch_tracts.csv')
+```
+
+```{r map app}
+ui <- fluidPage(
+  leafletOutput("mymap")
+)
+
+server <- function(input, output, session) {
+  output$mymap <- renderLeaflet({
+    leaflet(data = ch_bg) %>% 
+      addTiles() %>%
+      addPolygons(color = palette_urbn_cyan[4], 
+                  weight = 1, smoothFactor = 0.5,
+                  opacity = 1.0, fillOpacity = 0.5,
+                  highlightOptions = highlightOptions(color = "white", weight = 2,
+                                                      bringToFront = TRUE)) %>%
+      addMarkers(data = ch_landmarks,
+                 lng = ~Longitude, lat = ~Latitude, 
+                 label = ~Name) %>%
+      addProviderTiles(providers$CartoDB.Positron) 
+  })
+}
+
+shinyApp(ui, server)
+```
+
+```{r deploy app}
+rsconnect::deployApp('shiny_proposed-boundaries_civic-institutions.Rmd')
+```
