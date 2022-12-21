@@ -1,0 +1,19 @@
+"0","ch_bg <- read_csv('data/clean/ch_bg.csv')"
+"2","[1mRows: [22m[34m5[39m [1mColumns: [22m[34m12[39m"
+"2","[36m──[39m [1mColumn specification[22m [36m─────────────────────────────────────────────────────────────[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m (6): COUNTYFP, TRACTCE, AFFGEOID, NAMELSAD, LSAD, geometry
+[32mdbl[39m (6): STATEFP, BLKGRPCE, GEOID, NAME, ALAND, AWATER"
+"2","
+[36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
+[36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message."
+"0","ch_landmarks <- read_csv('congress_heights_landmarks-geocoded.csv') "
+"2","[1mRows: [22m[34m29[39m [1mColumns: [22m[34m62[39m"
+"2","[36m──[39m [1mColumn specification[22m [36m─────────────────────────────────────────────────────────────[39m
+[1mDelimiter:[22m "",""
+[31mchr[39m (28): Category/Description, Name, f_address, Match_addr, Addr_type, Status, R...
+[32mdbl[39m (17): Longitude, Latitude, Score, Rank, AddNum, AddNumFrom, AddNumTo, UnitNam...
+[33mlgl[39m (17): Type, PlaceName, Phone, URL, AddBldg, StPreDir, StPreType, BldgType, Bl..."
+"2","
+[36mℹ[39m Use `spec()` to retrieve the full column specification for this data.
+[36mℹ[39m Specify the column types or set `show_col_types = FALSE` to quiet this message."

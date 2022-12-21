@@ -5,7 +5,9 @@ account: oliviafiol
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 7927800
-bundleId: 6662073
+bundleId: 6662133
 url: https://oliviafiol.shinyapps.io/shiny_proposed-boundaries_civic-institutions/
-when: 1671646322.21649
-lastSyncTime: 1671646322.2165
+when: 1671647712.38402
+lastSyncTime: 1671647712.38404
+asMultiple: FALSE
+asStatic: FALSE
